@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 sensor = 0
 
-@app.route("/sensor/", method=["POST"])
+@app.route("/sensor/", methods=["POST"])
 def number():
     content = request.get_json()
     sens = content['sens']    
