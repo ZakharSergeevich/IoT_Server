@@ -1,26 +1,9 @@
-import socket
+from flask import Flask
+app = Flask(__name__)
 
-print("Hello")
+@app.route("/")
+def hello():
+    return "Hello World!"
 
-serv_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, proto=0)
-serv_sock.bind(('', 53210))
-serv_sock.listen(10)
-
-sens = 0
-
-while True:
-    client_sock, client_addr = serv_sock.accept()
-    print('Connected by', client_addr)
-    
-    while True:
-        data = client_sock.recv(1024)
-        if data != '':
-            sens = sens + int(data)
-
-        #print("DATA: ", data)
-        print("FULL SENSOR: ", sens)
-        if not data: 
-            break
-        client_sock.sendall(str(sens))
-
-    client_sock.close()
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80, debug=True)
