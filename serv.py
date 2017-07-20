@@ -1,8 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for
 import datetime
 app = Flask(__name__)
 
-app = Flask(__name__)
+sensor = 0
+
+@app.route("/sensor/", method=["POST"])
+def number():
+    content = request.get_json()
+    sens = content['sens']    
+    sensor = sensor + int(sens)
+    print (content)
+    return 'JSON posted'
 
 @app.route("/")
 def hello():
@@ -10,7 +18,8 @@ def hello():
    timeString = now.strftime("%Y-%m-%d %H:%M")
    templateData = {
       'title' : 'HELLO!',
-      'time': timeString
+      'time': timeString,
+      'counter': str(sensor) 
       }
    return render_template('main.html', **templateData)
 
