@@ -7,7 +7,8 @@ sensor = 0
 @app.route("/sensor/", methods=["POST"])
 def number():
     content = request.get_json()
-    sens = content['sens']    
+    sens = content['sens'] 
+    global sensor   
     sensor = sensor + int(sens)
     print (content)
     return 'JSON posted'

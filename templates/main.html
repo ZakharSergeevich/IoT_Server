@@ -1,11 +1,30 @@
 <!DOCTYPE html>
    <head>
       <title>{{ title }}</title>
+      <style type="text/css">
+        #content {
+            width: 500px;           /* Ширина слоя */
+            margin: 0 auto 50px;    /* Выравнивание по центру */
+        }
+        #footer {
+            position: fixed;        /* Фиксированное положение */
+            left: 0; bottom: 0;     /* Левый нижний угол */
+            padding: 10px;          /* Поля вокруг текста */
+            background: #39b54a;  /* Цвет фона */
+            color: #fff;          /* Цвет текста */
+            width: 100%;            /* Ширина слоя */
+        }
+  </style>
    </head>
 
    <body>
       <h1>Sensor data</h1>
       <h2>The date and time on the server is: {{ time }}</h2>
       <h2>Всего пройдено: {{ counter }}</h2>
+        <div id="footer">
+            <body link="red" vlink="#cecece" alink="#ff0000" bgcolor="white">
+                <a href="https://github.com/ZakharSergeevich/IoT_Server/tree/flask_server" target="_blank">GitHub</a>
+            </body>    
+        </div>
    </body>
 </html>
